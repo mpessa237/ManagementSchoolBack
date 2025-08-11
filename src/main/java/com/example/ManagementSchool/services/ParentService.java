@@ -4,10 +4,13 @@ import com.example.ManagementSchool.dto.ParentReqDTO;
 import com.example.ManagementSchool.dto.ParentRespDTO;
 import com.example.ManagementSchool.entity.Parent;
 import com.example.ManagementSchool.entity.Role;
+import com.example.ManagementSchool.entity.Student;
 import com.example.ManagementSchool.entity.User;
 import com.example.ManagementSchool.mapper.ParentMapper;
 import com.example.ManagementSchool.repository.ParentRepo;
+import com.example.ManagementSchool.repository.StudentRepo;
 import com.example.ManagementSchool.repository.UserRepo;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -25,12 +28,14 @@ public class ParentService {
     private final ParentRepo parentRepo;
     private final ParentMapper parentMapper;
     private final PasswordEncoder passwordEncoder;
+    private final StudentRepo studentRepo;
 
-    public ParentService(UserRepo userRepo, ParentRepo parentRepo, ParentMapper parentMapper, PasswordEncoder passwordEncoder) {
+    public ParentService(UserRepo userRepo, ParentRepo parentRepo, ParentMapper parentMapper, PasswordEncoder passwordEncoder, StudentRepo studentRepo) {
         this.userRepo = userRepo;
         this.parentRepo = parentRepo;
         this.parentMapper = parentMapper;
         this.passwordEncoder = passwordEncoder;
+        this.studentRepo = studentRepo;
     }
 
 

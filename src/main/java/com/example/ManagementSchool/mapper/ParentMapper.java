@@ -15,7 +15,6 @@ public class ParentMapper {
         parent.setAddress(parentReqDTO.getAddress());
         parent.setProfession(parentReqDTO.getProfession());
         parent.setPhoneNumber(parentReqDTO.getPhoneNumber());
-
         return parent;
     }
 
@@ -27,7 +26,6 @@ public class ParentMapper {
         parentRespDTO.setAddress(parent.getAddress());
         parentRespDTO.setProfession(parent.getProfession());
         parentRespDTO.setPhoneNumber(parent.getPhoneNumber());
-
         return parentRespDTO;
     }
 }

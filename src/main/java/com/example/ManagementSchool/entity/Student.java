@@ -24,8 +24,9 @@ public class Student extends BaseEntity {
     private String lastname;
     private String gender;
     private Date dateOfBirth;
+    @Column(unique = true, nullable = false)
     private String registrationNumber;
-    private Boolean isDeleted;
+    private boolean active = true;
 
     @ManyToOne
     private Parent parent;

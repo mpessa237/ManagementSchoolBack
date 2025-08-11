@@ -59,4 +59,10 @@ public class ClassroomService {
         return classroomRepo.saveAndFlush(classroomOptional.get());
     }
 
+    public void deleteClassroom(Integer classroomId){
+        classroomRepo.findById(classroomId)
+                .orElseThrow(()->new EntityNotFoundException("classroom not found!"));
+        classroomRepo.deleteById(classroomId);
+    }
+
 }

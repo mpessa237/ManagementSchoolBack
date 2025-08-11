@@ -29,6 +29,11 @@ public class ClassroomController {
         return ResponseEntity.status(HttpStatus.CREATED).body(new ApiResponse("classroom saved successfully",savedClassroom));
     }
 
+    @GetMapping
+    public ResponseEntity<List<Classroom>> getAllClassroom(){
+        return ResponseEntity.ok(this.classroomService.getAllClassroom());
+    }
+
     @GetMapping("/premier-cycle")
     public ResponseEntity<List<Classroom>> getFirstCycleClassroom(){
         List<Classroom> classroom = classroomService.getFirstCycleClassroom();
@@ -50,5 +55,11 @@ public class ClassroomController {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(updateClassroom);
+    }
+
+    @DeleteMapping("/{classroomId}")
+    public ResponseEntity<ApiResponse> delete(@PathVariable Integer classroomId){
+        classroomService.deleteClassroom(classroomId);
+        return ResponseEntity.ok(new ApiResponse("classroom delete successfully",null));
     }
 }
