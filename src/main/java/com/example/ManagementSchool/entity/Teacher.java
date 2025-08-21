@@ -8,7 +8,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -21,13 +23,19 @@ public class Teacher extends BaseEntity {
     private Integer teacherId;
     private String firstname;
     private String lastname;
-    private String email;
     private String phoneNumber;
     private String address;
-    private Boolean isDeleted;
+    private boolean active = true;
 
-    @OneToMany(mappedBy = "teacher")
-    private List<Course> courses = new ArrayList<>();
-    @OneToMany(mappedBy = "teacher")
-    private List<Classroom> classrooms = new ArrayList<>();
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id",referencedColumnName = "userId")
+    private User user;
+    @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
+    @JoinTable(
+            name = "teacher_course",
+            joinColumns = @JoinColumn(name = "teacher_id"),
+            inverseJoinColumns = @JoinColumn(name = "course_id")
+    )
+    private Set<Course> courses = new HashSet<>();
+
 }

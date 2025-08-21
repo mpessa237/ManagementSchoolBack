@@ -17,5 +17,7 @@ public class StudentRespDTO {
     private String gender;
     private Date dateOfBirth;
     private String registrationNumber;
+    private String temporaryPassword;
     private Integer classroomId;
+    private String className;
 }

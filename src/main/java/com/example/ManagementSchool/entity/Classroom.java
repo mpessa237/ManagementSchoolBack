@@ -28,6 +28,5 @@ public class Classroom extends BaseEntity {
 
     @OneToMany(mappedBy = "classroom",cascade = CascadeType.ALL)
     private List<Student> students = new ArrayList<>();
-    @ManyToOne
-    private Teacher teacher;
+
 }

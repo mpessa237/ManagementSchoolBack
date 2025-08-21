@@ -24,6 +24,8 @@ public class ClassroomMapper {
         classroomRespDTO.setCapacity(classroom.getCapacity());
         classroomRespDTO.setCycle(classroom.getCycle());
 
+
+
         return classroomRespDTO;
     }
 }

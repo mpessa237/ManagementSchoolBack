@@ -15,8 +15,6 @@ public class RegistrationReqDTO {
     @NotEmpty(message = "firstname is mandatory")
     @NotBlank(message = "firstname is mandatory")
     private String firstname;
-    @NotEmpty(message = "lastname is mandatory")
-    @NotBlank(message = "lastname is mandatory")
     private String lastname;
     @NotEmpty(message = "email is mandatory")
     @NotBlank(message = "email is mandatory")
