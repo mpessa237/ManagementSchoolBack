@@ -25,6 +25,15 @@ public class StudentMapper {
         studentRespDTO.setDateOfBirth(student.getDateOfBirth());
         studentRespDTO.setGender(student.getGender());
         studentRespDTO.setRegistrationNumber(student.getRegistrationNumber());
+
+        if (student.getClassroom() != null) {
+            studentRespDTO.setClassroomId(student.getClassroom().getClassroomId());
+            studentRespDTO.setClassName(student.getClassroom().getClassName());
+        } else {
+            studentRespDTO.setClassroomId(null);
+            studentRespDTO.setClassName(null);
+        }
+
         return studentRespDTO;
     }
 }

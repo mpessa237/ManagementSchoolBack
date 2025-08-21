@@ -1,6 +1,7 @@
 package com.example.ManagementSchool.entity;
 
 import com.example.ManagementSchool.common.BaseEntity;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,6 +28,7 @@ public class Classroom extends BaseEntity {
     private Cycle cycle;
 
     @OneToMany(mappedBy = "classroom",cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("classroom") //pour la reference circulaire
     private List<Student> students = new ArrayList<>();
 
 }

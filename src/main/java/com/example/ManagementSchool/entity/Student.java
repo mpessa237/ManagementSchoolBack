@@ -1,6 +1,7 @@
 package com.example.ManagementSchool.entity;
 
 import com.example.ManagementSchool.common.BaseEntity;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -31,6 +32,7 @@ public class Student extends BaseEntity {
     @ManyToOne
     private Parent parent;
     @ManyToOne
+    @JsonIgnoreProperties("students") //pour la reference circulaire
     private Classroom classroom;
     @OneToMany(mappedBy = "student")
     private List<Grade> grades = new ArrayList<>();
